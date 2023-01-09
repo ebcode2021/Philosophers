@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 20:25:14 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/08 14:02:21 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/09 19:57:13 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 enum e_bool
 { 
 	TRUE = 1,
-	FALSE = -1,
+	FALSE = 0,
 };
 
 typedef struct s_philos
@@ -27,5 +27,11 @@ typedef struct s_philos
 	int	time_to_sleep;
 	int	must_eat_cnt;
 }				t_philos;
+
+typedef struct s_thread
+{
+	int	idx;
+	int	time_after_eat;
+}				t_thread;
 
 #endif

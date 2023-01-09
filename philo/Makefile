@@ -7,7 +7,9 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
 # PHILOSOPHERS_SRC
-SRCS = main.c
+SRCS = main.c \
+		utils.c \
+		print.c
 SRCS_DIR = src/
 SRCS_PATH = $(addprefix $(SRCS_DIR), $(SRCS))
 

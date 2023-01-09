@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 16:25:52 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/08 14:08:10 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/09 19:49:39 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	init_philos(t_philos *philos, int argc, char **argv)
 {
 	if (!check_arguments(argc, argv))
 		return (0);
+	printf("hi");
 	philos->cnt = philo_atoi(argv[1]);
 	philos->time_to_die = philo_atoi(argv[2]);
 	philos->time_to_eat = philo_atoi(argv[3]);

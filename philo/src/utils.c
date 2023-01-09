@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:47:05 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/08 14:07:02 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/09 19:51:25 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int	check_arguments(int argc, char **argv)
 	while (argv[idx])
 	{
 		if (philo_atoi(argv[idx++]) == FALSE)
+		{
+			print_error(NOT_A_VALID);
 			return (0);
+		}
 	}
 	return (argc);
 }
