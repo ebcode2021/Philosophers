@@ -8,8 +8,9 @@ RM = rm -rf
 
 # PHILOSOPHERS_SRC
 SRCS = main.c \
-		utils.c \
-		print.c
+		print.c \
+		routine.c \
+		utils.c
 SRCS_DIR = src/
 SRCS_PATH = $(addprefix $(SRCS_DIR), $(SRCS))
 

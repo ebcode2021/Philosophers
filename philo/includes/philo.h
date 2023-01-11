@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 20:25:16 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/08 14:07:33 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/11 15:14:21 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <unistd.h>
 
 /* main.c */
-int			init_philos(t_philos *philos, int argc, char **argv);
+int			init_philos(t_philo *philos, t_inform inform);
 int			main(int argc, char **argv);
 
 /* print.c */
