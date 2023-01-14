@@ -10,7 +10,8 @@ RM = rm -rf
 SRCS = main.c \
 		print.c \
 		routine.c \
-		utils.c
+		init_inform.c \
+		init_philos.c
 SRCS_DIR = src/
 SRCS_PATH = $(addprefix $(SRCS_DIR), $(SRCS))
 
