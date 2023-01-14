@@ -8,10 +8,11 @@ RM = rm -rf
 
 # PHILOSOPHERS_SRC
 SRCS = main.c \
+		init_inform.c \
+		init_philos.c \
 		print.c \
 		routine.c \
-		init_inform.c \
-		init_philos.c
+		time.c
 SRCS_DIR = src/
 SRCS_PATH = $(addprefix $(SRCS_DIR), $(SRCS))
 
