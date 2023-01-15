@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 20:25:16 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/15 17:03:43 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/15 20:13:16 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ void		print_action(t_philo *philo, char *msg);
 void		*routine(void *philos_a);
 
 /* utils.c */
-void		philo_do(t_philo *philo, int action);
+int			philo_atoi(char *argv);
+int			check_arguments(int argc, char **argv);
+void		wait_all_thread(t_philo *philos, int total_cnt);
 
 /* time.c */
-long long 	get_time(void);
-void		init_philos_time(t_philo *philos, t_inform *inform);
+long long	get_time(void);
+void		init_philos_start_time(t_philo *philos, t_inform *inform);
 
 #endif

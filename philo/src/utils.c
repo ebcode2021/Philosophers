@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:22:38 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/15 16:41:20 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/15 20:15:09 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,8 @@ void	wait_all_thread(t_philo *philos, int total_cnt)
 
 	idx = 0;
 	while (idx < total_cnt)
-		pthread_join(philos[idx++].thread_id, 0);
+	{
+		pthread_join(philos[idx].thread_id, 0);
+		idx++;
+	}
 }

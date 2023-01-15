@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 20:58:13 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/15 17:08:43 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/15 20:31:16 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	philo_eat(t_philo *philo)
 	print_action(philo, EAT_MSG);
 	set_time_after_eat(philo);
 	usleep_timer(philo->inform->time_to_eat);
-	if (++philo->eat_cnt == philo->inform->must_eat_cnt)
+	philo->eat_cnt++;
+	if (philo->eat_cnt == philo->inform->must_eat_cnt)
 		philo->done = 1;
 }
 
@@ -63,8 +64,8 @@ void	philo_action(t_philo *philo)
 
 void	*routine(void *void_philos)
 {
-	t_philo *philos;
-	
+	t_philo	*philos;
+
 	philos = (t_philo *)void_philos;
 	pthread_mutex_lock(&(philos->inform->routine_mutex));
 	pthread_mutex_unlock(&(philos->inform->routine_mutex));
