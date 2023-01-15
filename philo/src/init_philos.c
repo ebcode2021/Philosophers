@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 17:21:48 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/14 21:15:50 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/15 16:23:18 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void	insert_datas(t_philo *philos, pthread_mutex_t *fork, t_inform *info)
 		philos[idx].idx = idx + 1;
 		philos[idx].time_after_eat = 0;
 		philos[idx].eat_cnt = 0;
+		philos[idx].done = 0;
 		philos[idx].inform = info;
 		if (idx == 0)
 			philos[idx].left_fork = fork[info->philo_cnt - 1];
@@ -44,20 +45,6 @@ static void	insert_datas(t_philo *philos, pthread_mutex_t *fork, t_inform *info)
 	}
 }
 
-static int	seat_philos(t_philo *philos, t_inform *inform)
-{
-	int	idx;
-
-	pthread_mutex_lock(&inform->routine_mutex);
-	idx = -1;
-	while (++idx < inform->philo_cnt)
-	{
-		if (pthread_create(&philos[idx].thread_id, 0, routine, &philos[idx]) != 0)
-			return (print_error(THREAD_ERROR));
-	}
-	return (1);
-}
-
 int	init_philos(t_philo **philos, t_inform *inform)
 {
 	pthread_mutex_t	*fork_mutex;
@@ -67,6 +54,5 @@ int	init_philos(t_philo **philos, t_inform *inform)
 	if (!philos || !fork_mutex)
 		return (print_error(MALLOC_FAIL));
 	insert_datas(*philos, fork_mutex, inform);
-	seat_philos(*philos, inform);
 	return (1);
 }

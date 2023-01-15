@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 20:25:14 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/14 21:09:41 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/15 15:34:18 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,23 @@
 
 # include <pthread.h>
 
-enum e_bool
+enum	e_bool
 { 
 	TRUE = 1,
 	FALSE = 0,
+};
+
+enum	e_fork
+{
+	TAKE = 1,
+	PUT = 0,
+};
+
+enum	e_do
+{
+	EAT = 1,
+	SLEEP = 2,
+	THINK = 3,
 };
 
 typedef struct s_inform
@@ -28,7 +41,7 @@ typedef struct s_inform
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				must_eat_cnt;
-	int				finish; 
+	int				finish;
 	long long		start_time;
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	routine_mutex;
@@ -38,6 +51,7 @@ typedef struct s_philo
 {
 	int				idx;
 	int				eat_cnt;
+	int				done;
 	long long		time_after_eat;
 	t_inform		*inform;
 	pthread_t		thread_id;

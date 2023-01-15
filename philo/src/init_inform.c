@@ -6,61 +6,11 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:08:07 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/14 18:19:34 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/15 16:41:03 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-static int	philo_atoi(char *argv)
-{
-	int			idx;
-	long long	num;
-
-	idx = 0;
-	num = 0;
-	while (argv[idx] == 32)
-		idx++;
-	if (argv[idx] == '+')
-	{
-		if (argv[idx + 1] < '0' || argv[idx + 1] > '9')
-			return (print_error(NOT_A_VALID));
-		idx++;
-	}
-	else if (argv[idx] == '-')
-		return (print_error(NOT_A_VALID));
-	while (argv[idx])
-	{
-		if (argv[idx] < '0' || argv[idx] > '9')
-			return (print_error(NOT_A_VALID));
-		num = num * 10 + (argv[idx] - '0');
-		if (num < INT_MIN || num > INT_MAX)
-			return (print_error(NOT_A_VALID));
-		idx++;
-	}
-	return ((int)num);
-}
-
-static int	check_arguments(int argc, char **argv)
-{
-	int	idx;
-
-	idx = 1;
-	if (argc < 5 || argc > 6)
-	{
-		print_error(ARGU_CNT);
-		return (0);
-	}
-	while (argv[idx])
-	{
-		if (philo_atoi(argv[idx++]) == FALSE)
-		{
-			print_error(NOT_A_VALID);
-			return (0);
-		}
-	}
-	return (argc);
-}
 
 int	init_inform(t_inform *inform, int argc, char **argv)
 {

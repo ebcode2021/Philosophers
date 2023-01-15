@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 20:25:16 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/14 21:30:19 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/15 17:03:43 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,13 @@ int			main(int argc, char **argv);
 
 /* print.c */
 int			print_error(char *msg);
-void		print_philo(t_philo *philo, char *msg);
+void		print_action(t_philo *philo, char *msg);
 
 /* routine.c */
 void		*routine(void *philos_a);
 
 /* utils.c */
+void		philo_do(t_philo *philo, int action);
 
 /* time.c */
 long long 	get_time(void);

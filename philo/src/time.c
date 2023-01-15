@@ -6,13 +6,13 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:13:43 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/14 21:30:29 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/15 16:51:58 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-long long get_time(void)
+long long	get_time(void)
 {
 	struct timeval	time;
 
@@ -20,7 +20,12 @@ long long get_time(void)
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
-void	init_philos_time(t_philo *philos, t_inform *inform)
+long long	get_elapsed_time(long long start_time)
+{
+	return ((get_time() - start_time) / 1000);
+}
+
+void	init_philos_start_time(t_philo *philos, t_inform *inform)
 {
 	int	idx;
 
@@ -28,4 +33,15 @@ void	init_philos_time(t_philo *philos, t_inform *inform)
 	idx = 0;
 	while (idx < inform->philo_cnt)
 		philos[idx++].time_after_eat = inform->start_time;
+}
+
+void	usleep_timer(int usleep_time)
+{
+	usleep(usleep_time);
+	//check_Die() <- monitoring................?
+}
+
+void	set_time_after_eat()
+{
+	
 }

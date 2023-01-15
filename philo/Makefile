@@ -11,8 +11,10 @@ SRCS = main.c \
 		init_inform.c \
 		init_philos.c \
 		print.c \
+		routine_utils.c \
 		routine.c \
-		time.c
+		time.c \
+		utils.c
 SRCS_DIR = src/
 SRCS_PATH = $(addprefix $(SRCS_DIR), $(SRCS))
 
