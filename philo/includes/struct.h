@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 20:25:14 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/15 20:10:50 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/18 21:56:49 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 # define STRUCT_H
 
 # include <pthread.h>
-
-enum	e_bool
-{ 
-	TRUE = 1,
-	FALSE = 0,
-};
 
 enum	e_fork
 {
@@ -55,9 +49,9 @@ typedef struct s_philo
 	long long		time_after_eat;
 	t_inform		*inform;
 	pthread_t		thread_id;
-	pthread_mutex_t	left_fork;
-	pthread_mutex_t	right_fork;
-	pthread_mutex_t	each_mutex;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
+	pthread_mutex_t	*each_mutex;
 }				t_philo;
 
 #endif

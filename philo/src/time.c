@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:13:43 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/15 22:47:44 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/18 21:59:15 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ long long	get_time(void)
 
 long long	get_elapsed_time(long long start_time)
 {
-	return ((get_time() - start_time) / 1000);
+	//printf("get_time : %lld\n", get_time());
+	//printf("start_time : %lld\n", start_time);
+	return (get_time() - start_time);
 }
 
-void	init_philos_start_time(t_philo *philos, t_inform *inform)
+void	init_start_time(t_philo *philos, t_inform *inform)
 {
 	int	idx;
 
@@ -39,29 +41,20 @@ void	init_philos_start_time(t_philo *philos, t_inform *inform)
 }
 
 // 이거 다시 짜야됨
-void	usleep_timer(long long usleep_time)
+void	usleep_timer(long long time)
 {
+	int			usleep_time;
 	long long	end_times;
 
-	end_times = get_time() + usleep_time; // ms 단위
-	while (usleep_time);
-	usleep(usleep_time);
+	end_times = get_time() + time;
+	usleep_time = time / 5;
+	while (get_time() < end_times)
+		usleep(usleep_time);
 }
 
 void	set_time_after_eat(t_philo *philo)
 {
-	pthread_mutex_lock(&(philo->inform->routine_mutex));
+	pthread_mutex_lock(&philo->inform->routine_mutex);
 	philo->time_after_eat = get_time();
-	pthread_mutex_unlock(&(philo->inform->routine_mutex));
+	pthread_mutex_unlock(&philo->inform->routine_mutex);
 }
-
-int	check_over_time(t_philo *philo)
-{
-	if (get_time() > philo->time_after_eat + philo->inform->time_to_die)
-	{
-		philo->done = 1;
-		return (1);
-	}
-	return (0);
-}
-

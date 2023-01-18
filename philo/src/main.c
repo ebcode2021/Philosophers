@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 16:25:52 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/15 22:48:16 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/18 22:15:14 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 // 내일 할거
 // 1. timer 고치기
 // 2. mutex_lock check
+// 3. philo_done은 어떻게 체크하징
 /***********************************/
 
-static int	start_to_eat(t_philo *philos, t_inform *inform)
+static void	start_to_eat(t_philo *philos, t_inform *inform)
 {
 	int	idx;
 
@@ -27,42 +28,36 @@ static int	start_to_eat(t_philo *philos, t_inform *inform)
 	while (idx < inform->philo_cnt)
 	{
 		if (pthread_create(&philos[idx].thread_id, 0, routine, &philos[idx]) != 0)
-			return (print_error(THREAD_ERROR));
+			print_error(THREAD_ERROR);
 		idx++;
 	}
-	return (1);
+	init_start_time(philos, inform);
+	pthread_mutex_unlock(&inform->routine_mutex);
 }
 
-static void	monitoring_thread(t_philo *philos, t_inform *inform)
+static void	monitoring_thread(t_philo **philos, t_inform *inform)
 {
 	int	idx;
-	int	flag;
-	int	total_done;
 
-	flag = 1;
-	init_philos_start_time(philos, inform);
-	pthread_mutex_unlock(&inform->routine_mutex);
-	while (flag)
+	while (inform->finish == 0)
 	{
 		idx = 0;
-		total_done = 0;
-		while (idx < inform->philo_cnt)
+		while (idx < inform->philo_cnt || inform->finish == 0)
 		{
-			pthread_mutex_lock(&philos[idx].each_mutex);
-			if (inform->finish || check_over_time(philos[idx]))
+			pthread_mutex_lock(philos[idx]->each_mutex);
+			if (philos[idx]->done == 0)
 			{
-				flag = 0;
+				check_over_time(philos[idx]);
+				pthread_mutex_unlock(philos[idx]->each_mutex);
 				break ;
 			}
-			if (philos[idx].done)
-				total_done++;
-			pthread_mutex_unlock(&philos[idx].each_mutex);
+			pthread_mutex_unlock(philos[idx]->each_mutex);
 			idx++;
 		}
-		if (total_done == inform->philo_cnt)
-			break;
+		if (check_all_done(*philos, inform))
+			break ;
 	}
-	wait_all_thread(philos, inform->philo_cnt);
+	wait_all_thread(*philos, inform->philo_cnt);
 }
 
 static void	destory_mutex(t_philo **philos, t_inform *inform)
@@ -72,23 +67,23 @@ static void	destory_mutex(t_philo **philos, t_inform *inform)
 	idx = 0;
 	while (idx < inform->philo_cnt)
 	{
-		pthread_mutex_destroy(&(philos[idx]->right_fork));
-		pthread_mutex_destroy(&(philos[idx]->each_mutex));
+		pthread_mutex_destroy(philos[idx]->right_fork);
+		pthread_mutex_destroy(philos[idx]->each_mutex);
 		idx++;
 	}
-	pthread_mutex_destroy(&(inform->routine_mutex));
-	pthread_mutex_destroy(&(inform->print_mutex));
+	pthread_mutex_destroy(&inform->routine_mutex);
+	pthread_mutex_destroy(&inform->print_mutex);
 }
 
-static void	free_philos(t_philo **philos, int total_cnt)
+static void	free_philos(t_philo **philos, t_inform *inform)
 {
 	int	idx;
 
 	idx = 0;
-	while (idx < total_cnt)
+	while (idx < inform->philo_cnt)
 	{
-		free(&(philos[idx]->right_fork));
-		free(&(philos[idx]->each_mutex));
+		free(philos[idx]->right_fork);
+		free(philos[idx]->each_mutex);
 		idx++;
 	}
 	free(*philos);
@@ -99,20 +94,14 @@ int	main(int argc, char **argv)
 	t_philo			*philos;
 	t_inform		inform;
 
+	if (is_manual(argc, argv))
+		return (0);
 	if (init_inform(&inform, argc, argv) && init_philos(&philos, &inform))
 	{
-		if (start_to_eat(philos, &inform))
-		{
-			monitoring_thread(philos, &inform);
-			destory_mutex(&philos, &inform);
-			free_philos(&philos, inform.philo_cnt);
-		}
+		start_to_eat(philos, &inform);
+		monitoring_thread(&philos, &inform);
+		destory_mutex(&philos, &inform);
+		free_philos(&philos, &inform);
 	}
 	return (0);
 }
-
-// 뭘 감시하지....?
-// 죽은애가 있나?
-// 현재시간 - 마지막으로 먹은시간 이 견딜 수 있는 시간을 오버하면 (함수로 빼) -> is_finish
-// 다 먹었나..? while(philo->done) : (idx  == inform->philo_cnt)
-// 오버됬나?

@@ -8,10 +8,10 @@ RM = rm -rf
 
 # PHILOSOPHERS_SRC
 SRCS = main.c \
+		checker.c \
 		init_inform.c \
 		init_philos.c \
 		print.c \
-		routine_utils.c \
 		routine.c \
 		time.c \
 		utils.c
