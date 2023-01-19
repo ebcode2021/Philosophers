@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 17:21:48 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/19 17:51:30 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/19 21:18:14 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	set_mutex(pthread_mutex_t **fork, pthread_mutex_t **each, int total)
 	*fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * total);
 	*each = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * total);
 	if (!fork | !each)
-		return print_error(MALLOC_FAIL);
+		return (print_error(MALLOC_FAIL));
 	idx = 0;
 	while (idx < total)
 	{

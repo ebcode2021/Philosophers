@@ -6,12 +6,11 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 13:47:27 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/19 18:55:46 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/19 20:28:24 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
 
 void	print_action(t_philo *philo, char *msg)
 {
@@ -43,18 +42,4 @@ int	print_manual(void)
 	printf("| Fifth(optional)   : number_of_times_each_philosopher_must_eat\n\n");
 	printf("-------------------------------------------------------------\n\n");
 	return (1);
-}
-
-void	print_philos(t_philo *philos)
-{
-	int	idx;
-
-	idx = 0;
-	//while (idx < philos->inform->philo_cnt)
-	//{
-		printf("philos[%d] 의 왼쪽 fork : %p\n", philos[idx].idx, philos[idx].left_fork);
-		printf("philos[%d] 의 오른쪽 fork : %p\n", philos[idx].idx, philos[idx].right_fork);
-		//printf("each_mutex : %p\n", philos[idx].each_mutex);
-	//	idx++;
-	//}
 }

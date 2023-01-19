@@ -8,13 +8,14 @@ RM = rm -rf
 
 # PHILOSOPHERS_SRC
 SRCS = main.c \
+		action.c \
 		checker.c \
 		init_inform.c \
 		init_philos.c \
 		print.c \
-		routine.c \
 		time.c \
 		utils.c
+
 SRCS_DIR = src/
 SRCS_PATH = $(addprefix $(SRCS_DIR), $(SRCS))
 
@@ -23,7 +24,7 @@ OBJS = $(SRCS_PATH:.c=.o)
 
 # SANITIZE
 ifdef SANITIZE
-	CFLAGS = -Wall -Wextra -Werror -fsanitize=thread -g3
+	CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
 endif
 
 # COMMANDS

@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:08:07 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/19 15:44:47 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/19 20:20:35 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ static int	check_arguments(int argc, char **argv)
 
 int	init_inform(t_inform *inform, int argc, char **argv)
 {
-	
 	if (!check_arguments(argc, argv))
 		return (0);
 	inform->philo_cnt = philo_atoi(argv[1]);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   action.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 20:58:13 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/19 18:56:24 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/19 20:37:17 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	philo_sleep(t_philo *philo)
 	usleep_timer(philo->inform->time_to_sleep);
 }
 
-static void	philo_action(t_philo *philo)
+static void	philo_routine(t_philo *philo)
 {
 	philo_fork(philo, TAKE);
 	philo_eat(philo);
@@ -57,16 +57,16 @@ static void	philo_action(t_philo *philo)
 	print_action(philo, THINK_MSG);
 }
 
-void	*routine(void *void_philos)
+void	*action(void *void_philo)
 {
 	t_philo	*philo;
 
-	philo = (t_philo *)void_philos;
+	philo = (t_philo *)void_philo;
 	pthread_mutex_lock(&philo->inform->routine_mutex);
 	pthread_mutex_unlock(&philo->inform->routine_mutex);
 	if (philo->idx % 2)
 		usleep(DEFAULT_USLEEP);
 	while (check_finish(philo) == 0)
-		philo_action(philo);
+		philo_routine(philo);
 	return (0);
 }
