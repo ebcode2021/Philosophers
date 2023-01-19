@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 20:25:16 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/18 22:15:30 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/19 18:46:29 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 /* checker.c */
 int			check_all_done(t_philo *philos, t_inform *inform);
 int			check_finish(t_philo *philo);
-int			check_over_time(t_philo *philo);
+int	check_over_time(t_philo *philo, long long die_time);
 
 /* init_inform.c */
 int			init_inform(t_inform *inform, int argc, char **argv);
@@ -49,7 +49,7 @@ void		*routine(void *philos_a);
 
 /* utils.c */
 int			is_manual(int argc, char **argv);
-void	wait_all_thread(t_philo *philos, int total_cnt);
+void		wait_all_thread(t_philo **philos, int total_cnt);
 
 /* time.c */
 void		init_start_time(t_philo *philos, t_inform *inform);
@@ -60,4 +60,5 @@ void		usleep_timer(long long usleep_time);
 
 
 void	print_philos(t_philo *philos);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
 #endif

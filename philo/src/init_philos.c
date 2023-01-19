@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 17:21:48 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/18 22:00:44 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/19 17:51:30 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static int	set_mutex(pthread_mutex_t **fork, pthread_mutex_t **each, int total)
 	idx = 0;
 	while (idx < total)
 	{
-		pthread_mutex_init(*fork + idx, 0);
-		pthread_mutex_init(*each + idx, 0);
+		pthread_mutex_init((*fork) + idx, 0);
+		pthread_mutex_init((*each) + idx, 0);
 		idx++;
 	}
 	return (1);
@@ -51,7 +51,6 @@ static int	insert_datas(t_philo *philos, pthread_mutex_t *fork_mutex, \
 		philos[idx].right_fork = &fork_mutex[idx];
 		idx++;
 	}
-	print_philos(philos);
 	return (1);
 }
 

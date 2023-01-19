@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:08:07 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/18 21:56:54 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/19 15:44:47 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	check_arguments(int argc, char **argv)
 	int	idx;
 
 	idx = 1;
-	if (argc < 4 || argc > 6)
+	if (argc < 5 || argc > 7)
 	{
 		print_error(ARGU_CNT);
 		return (0);
@@ -70,11 +70,12 @@ int	init_inform(t_inform *inform, int argc, char **argv)
 	inform->philo_cnt = philo_atoi(argv[1]);
 	inform->time_to_die = philo_atoi(argv[2]);
 	inform->time_to_eat = philo_atoi(argv[3]);
+	inform->time_to_sleep = philo_atoi(argv[4]);
 	inform->must_eat_cnt = 0;
 	inform->finish = 0;
 	pthread_mutex_init(&inform->print_mutex, 0);
 	pthread_mutex_init(&inform->routine_mutex, 0);
-	if (argc == 5)
-		inform->must_eat_cnt = philo_atoi(argv[4]);
+	if (argc == 6)
+		inform->must_eat_cnt = philo_atoi(argv[5]);
 	return (1);
 }
