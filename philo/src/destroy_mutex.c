@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   destroy_mutex.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 16:22:38 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/20 14:15:47 by eunson           ###   ########.fr       */
+/*   Created: 2023/01/20 14:19:39 by eunson            #+#    #+#             */
+/*   Updated: 2023/01/20 14:19:56 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	destory_mutex(t_philo *philos, t_inform *inform)
 {
-	unsigned char	*u_s1;
-	unsigned char	*u_s2;
+	int	idx;
 
-	u_s1 = (unsigned char *)s1;
-	u_s2 = (unsigned char *)s2;
-	while ((*u_s1 || *u_s2) && n)
+	idx = 0;
+	while (idx < inform->philo_cnt)
 	{
-		if (*u_s1 != *u_s2)
-			return (*u_s1 - *u_s2);
-		u_s1++;
-		u_s2++;
-		n--;
+		pthread_mutex_destroy(philos[idx].right_fork);
+		pthread_mutex_destroy(&(philos[idx].each_mutex));
+		idx++;
 	}
-	return (0);
-}
-
-int	is_manual(int argc, char **argv)
-{
-	if (argc == 2 && !ft_strncmp(argv[1], "--help", 7))
-		return (print_manual());
-	return (0);
+	pthread_mutex_destroy(&inform->routine_mutex);
+	pthread_mutex_destroy(&inform->print_mutex);
 }

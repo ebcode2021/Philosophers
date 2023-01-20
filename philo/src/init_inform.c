@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:08:07 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/19 20:20:35 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/20 14:11:54 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,13 @@ static int	check_arguments(int argc, char **argv)
 
 	idx = 1;
 	if (argc < 5 || argc > 7)
-	{
-		print_error(ARGU_CNT);
-		return (0);
-	}
+		return (print_error(ARGU_CNT));
 	while (argv[idx])
 	{
 		if (philo_atoi(argv[idx++]) == 0)
-		{
-			print_error(NOT_A_VALID);
-			return (0);
-		}
+			return (print_error(NOT_A_VALID));
 	}
-	return (argc);
+	return (1);
 }
 
 int	init_inform(t_inform *inform, int argc, char **argv)

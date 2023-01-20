@@ -7,12 +7,16 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
 # PHILOSOPHERS_SRC
-SRCS = main.c \
+SRCS =  main.c \
 		action.c \
 		checker.c \
+		destroy_mutex.c \
+		init_forks.c \
 		init_inform.c \
 		init_philos.c \
+		monitoring.c \
 		print.c \
+		start_to_simulation.c \
 		time.c \
 		utils.c
 
@@ -24,7 +28,7 @@ OBJS = $(SRCS_PATH:.c=.o)
 
 # SANITIZE
 ifdef SANITIZE
-	CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
+	CFLAGS = -Wall -Wextra -Werror -fsanitize=thread -g3
 endif
 
 # COMMANDS

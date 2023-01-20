@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   init_forks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 16:22:38 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/20 14:15:47 by eunson           ###   ########.fr       */
+/*   Created: 2023/01/19 22:37:41 by eunson            #+#    #+#             */
+/*   Updated: 2023/01/20 15:27:07 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	init_forks(pthread_mutex_t **forks, int total)
 {
-	unsigned char	*u_s1;
-	unsigned char	*u_s2;
+	int	idx;
 
-	u_s1 = (unsigned char *)s1;
-	u_s2 = (unsigned char *)s2;
-	while ((*u_s1 || *u_s2) && n)
-	{
-		if (*u_s1 != *u_s2)
-			return (*u_s1 - *u_s2);
-		u_s1++;
-		u_s2++;
-		n--;
-	}
-	return (0);
-}
-
-int	is_manual(int argc, char **argv)
-{
-	if (argc == 2 && !ft_strncmp(argv[1], "--help", 7))
-		return (print_manual());
-	return (0);
+	*forks = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * total);
+	if (!*forks)
+		return (print_error(MALLOC_FAIL));
+	idx = 0;
+	while (idx < total)
+		pthread_mutex_init((*forks) + (idx++), 0);
+	return (1);
 }

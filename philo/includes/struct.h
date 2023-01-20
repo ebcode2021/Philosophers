@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 20:25:14 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/19 14:21:59 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/20 16:13:47 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_philo
 	pthread_t		thread_id;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
-	pthread_mutex_t	*each_mutex;
+	pthread_mutex_t	each_mutex;
 }				t_philo;
 
 #endif
