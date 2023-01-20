@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 20:58:13 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/20 21:12:33 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/20 21:34:52 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	philo_routine(t_philo *philo)
 {
 	while (check_finish(philo) == 0 && philo->done == 0)
 	{
-		philo_fork(philo, TAKE);	
+		philo_fork(philo, TAKE);
 		philo_eat(philo);
 		philo_fork(philo, PUT);
 		philo_sleep(philo);
