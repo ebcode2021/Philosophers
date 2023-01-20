@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 20:25:16 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/20 16:43:55 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/20 20:35:55 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ int			init_forks(pthread_mutex_t **fork, int total);
 int			init_inform(t_inform *inform, int argc, char **argv);
 
 /* init_philos.c */
-int			init_philos(t_philo **philos, pthread_mutex_t **forks, t_inform *info);
+int			init_philos(t_philo **philos, \
+						pthread_mutex_t **forks, t_inform *info);
 
 /* main.c */
 int			main(int argc, char **argv);

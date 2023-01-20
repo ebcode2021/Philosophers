@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 20:25:14 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/20 16:13:47 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/20 20:51:12 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_inform
 	long long		start_time;
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	routine_mutex;
-}				t_inform;
+}					t_inform;
 
 typedef struct s_philo
 {
@@ -52,6 +52,6 @@ typedef struct s_philo
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	each_mutex;
-}				t_philo;
+}					t_philo;
 
 #endif

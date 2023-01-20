@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:19:58 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/20 17:45:00 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/20 21:15:54 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	check_all_done(t_philo *philos, t_inform *inform)
 	}
 	if (res == inform->philo_cnt)
 		return (1);
-	
 	return (0);
 }
 
@@ -56,7 +55,8 @@ int	check_over_time(t_philo *philo)
 	long long	die_time;
 
 	pthread_mutex_lock(&(philo->each_mutex));
-	if (philo->done) {
+	if (philo->done)
+	{
 		pthread_mutex_unlock(&(philo->each_mutex));
 		return (0);
 	}

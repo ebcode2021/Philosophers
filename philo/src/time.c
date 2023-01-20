@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:13:43 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/20 13:56:18 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/20 20:52:14 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,9 @@ void	set_time_after_eat(t_philo *philo)
 
 void	usleep_timer(long long time)
 {
-	long long	one_fifth;
 	long long	end_times;
 
 	end_times = get_time() + time;
-	one_fifth = time / 5;
 	while (get_time() < end_times)
-		usleep(one_fifth);
+		usleep(DEFAULT_USLEEP_TIMER);
 }
