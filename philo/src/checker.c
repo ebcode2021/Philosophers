@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:19:58 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/20 21:15:54 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/21 15:10:00 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,4 @@ int	check_over_time(t_philo *philo)
 		print_action(philo, DIE_MSG);
 	}
 	return (philo->inform->finish);
-}
-
-int	check_stop_monitoring(t_philo *philos, t_inform *inform)
-{
-	if (inform->finish)
-		return (0);
-	if (check_all_done(philos, inform))
-		return (0);
-	return (1);
 }
