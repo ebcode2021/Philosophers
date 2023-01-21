@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:08:07 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/20 14:11:54 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/21 11:02:28 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,18 @@ static int	philo_atoi(char *argv)
 	if (argv[idx] == '+')
 	{
 		if (argv[idx + 1] < '0' || argv[idx + 1] > '9')
-			return (print_error(NOT_A_VALID));
+			return (0);
 		idx++;
 	}
 	else if (argv[idx] == '-')
-		return (print_error(NOT_A_VALID));
+		return (0);
 	while (argv[idx])
 	{
 		if (argv[idx] < '0' || argv[idx] > '9')
-			return (print_error(NOT_A_VALID));
+			return (0);
 		num = num * 10 + (argv[idx] - '0');
 		if (num < INT_MIN || num > INT_MAX)
-			return (print_error(NOT_A_VALID));
+			return (0);
 		idx++;
 	}
 	return ((int)num);
