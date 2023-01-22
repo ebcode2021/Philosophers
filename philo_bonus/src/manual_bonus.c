@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 13:38:36 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/21 13:44:38 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/22 17:15:20 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (0);
 }
 
-int	is_manual(int argc, char **argv)
+int	is_manual(int argc, char *argv[])
 {
 	if (argc == 2 && !ft_strncmp(argv[1], "--help", 7))
 	{

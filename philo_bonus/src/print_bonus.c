@@ -6,22 +6,23 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:11:01 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/21 22:22:01 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/22 19:43:02 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-void	print_action(t_philo *philo, long long start_time, char *msg)
+void	print_action(t_proc *proc, long long start_time, char *msg)
 {
-	sem_wait(philo->each);
-	if (check_finish(philo) && ft_strncmp(msg, DIE_MSG, 5))
+	sem_wait(proc->print);
+	if (ft_strncmp(msg, DIE_MSG, 5) && check_die(proc) == 1)
 	{
-		sem_post(philo->each);
+		sem_post(proc->print);
 		return ;
 	}
 	printf("%lld ", get_elapsed_time(start_time));
-	printf("%d %s\n", philo->idx, msg);
+	printf("%d %s\n", proc->philo->idx, msg);
+	sem_post(proc->print);
 }
 
 void	print_error_with_exit(char *msg)

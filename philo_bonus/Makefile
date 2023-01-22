@@ -7,17 +7,19 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
 # PHILOSOPHERS_SRC
-NON_BONUS_SRCS =  main \
-				checker \
-				init_info \
-				init_philos \
-				print \
-				time \
-				utils
-BONUS = _bonus.c 
+SRCS =  main_bonus.c \
+		action_bonus.c \
+		checker_bonus.c \
+		die_checker_bonus.c \
+		fork_proc_bonus.c \
+		init_proc_bonus.c \
+		manual_bonus.c \
+		print_bonus.c \
+		time_bonus.c \
+		utils_bonus.c \
+		wait_all_proc_bonus.c
 
 SRCS_DIR = src/
-SRCS = $(addprefix $(NON_BONUS_SRCS), $(BONUS))
 SRCS_PATH = $(addprefix $(SRCS_DIR), $(SRCS))
 
 INCS = includes/
@@ -25,7 +27,7 @@ OBJS = $(SRCS_PATH:.c=.o)
 
 # SANITIZE
 ifdef SANITIZE
-	CFLAGS = -Wall -Wextra -Werror -fsanitize=thread -g3
+	CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
 endif
 
 # COMMANDS

@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sem_utils.c                                        :+:      :+:    :+:   */
+/*   wait_all_proc_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/21 15:14:19 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/21 18:32:02 by eunson           ###   ########.fr       */
+/*   Created: 2023/01/22 16:04:46 by eunson            #+#    #+#             */
+/*   Updated: 2023/01/22 19:12:44 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-static void	all_unlink()
+static void	all_close(t_proc *proc)
 {
-	sem_unlink("fork");
-	sem_unlink("routine");
-	sem_unlink("print");
-	
+	sem_close(proc->fork);
+	sem_close(proc->print);
+	sem_close(proc->routine);
 }
 
-void	init_sem(t_info *info)
+void	wait_all_proc(t_proc *proc)
 {
-	all_unlink();
-	info->fork = sem_open("fork", O_CREAT, 0666, info->philo_cnt);
-	info->routine = sem_open("ready", O_CREAT, 0666, 1);
-	info->print = sem_open("print", O_CREAT, 0666, info->philo_cnt);
+	int	idx;
+
+	idx = 0;
+	while (idx < proc->philo_cnt)
+	{
+		waitpid(-1, &(proc->status), 0);
+		if (WEXITSTATUS(proc->status) == EXIT_FAILURE)
+			kill(0, SIGINT);
+		idx++;
+	}
+	all_close(proc);
 }

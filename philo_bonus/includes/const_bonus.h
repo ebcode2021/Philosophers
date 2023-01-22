@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:06:05 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/21 17:09:09 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/22 19:14:20 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 /* time */
 # define DEFAULT_USLEEP 5000
-# define DEFAULT_USLEEP_TIMER 300
+# define DEFAULT_USLEEP_TIMER 100
 
 # define CHILD 0
 

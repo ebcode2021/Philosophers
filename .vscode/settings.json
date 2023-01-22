@@ -1,5 +1,6 @@
 {
 	"files.associations": {
-		"struct_bonus.h": "c"
+		"struct_bonus.h": "c",
+		"philo_bonus.h": "c"
 	}
 }

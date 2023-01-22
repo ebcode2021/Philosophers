@@ -6,13 +6,13 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:20:04 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/21 15:22:23 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/22 17:15:22 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-int	cnt_digit(long long long_n, int n)
+static int	cnt_digit(long long long_n, int n)
 {
 	int	cnt;
 
@@ -23,6 +23,16 @@ int	cnt_digit(long long long_n, int n)
 		cnt++;
 	}
 	if (n < 0)
+		cnt++;
+	return (cnt);
+}
+
+static size_t	ft_strlen(const char *s)
+{
+	size_t	cnt;
+
+	cnt = 0;
+	while (*s++)
 		cnt++;
 	return (cnt);
 }
@@ -54,16 +64,6 @@ char	*ft_itoa(int n)
 	return (tmp);
 }
 
-size_t	ft_strlen(const char *s)
-{
-	size_t	cnt;
-
-	cnt = 0;
-	while (*s++)
-		cnt++;
-	return (cnt);
-}
-
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	int		prefix_len;
@@ -86,4 +86,33 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return_char[prefix_len + index] = s2[index];
 	return_char[prefix_len + index] = 0;
 	return (return_char);
+}
+
+int	philo_atoi(char *argv)
+{
+	int			idx;
+	long long	num;
+
+	idx = 0;
+	num = 0;
+	while (argv[idx] == 32)
+		idx++;
+	if (argv[idx] == '+')
+	{
+		if (argv[idx + 1] < '0' || argv[idx + 1] > '9')
+			print_error_with_exit(NOT_A_VALID);
+		idx++;
+	}
+	else if (argv[idx] == '-')
+		print_error_with_exit(NOT_A_VALID);
+	while (argv[idx])
+	{
+		if (argv[idx] < '0' || argv[idx] > '9')
+			print_error_with_exit(NOT_A_VALID);
+		num = num * 10 + (argv[idx] - '0');
+		if (num < INT_MIN || num > INT_MAX)
+			print_error_with_exit(NOT_A_VALID);
+		idx++;
+	}
+	return ((int)num);
 }

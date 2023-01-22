@@ -6,20 +6,11 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:13:02 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/21 22:17:26 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/22 16:48:54 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
-
-void	set_start_time(t_proc *proc)
-{
-	int	current_time;
-
-	current_time = get_time();
-	proc->start_time = current_time;
-	proc->philo->last_eat = current_time;
-}
 
 long long	get_time(void)
 {
@@ -34,7 +25,16 @@ long long	get_elapsed_time(long long start_time)
 	return (get_time() - start_time);
 }
 
-void	set_time_after_eat(t_philo *philo, t_info *info)
+void	set_start_time(t_proc *proc)
+{
+	long long	current_time;
+
+	current_time = get_time();
+	proc->start_time = current_time;
+	proc->philo->last_eat = current_time;
+}
+
+void	set_time_after_eat(t_philo *philo)
 {
 	sem_wait(philo->each);
 	philo->last_eat = get_time();
