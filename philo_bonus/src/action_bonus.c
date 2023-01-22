@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 19:32:29 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/22 19:33:44 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/22 20:09:57 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ static void	routine(t_proc *proc)
 		return ;
 	philo = proc->philo;
 	sem_post(proc->routine);
+	proc->start_time = get_time();
+	proc->philo->last_eat = get_time();
 	if ((philo->idx) % 2)
 		usleep(DEFAULT_USLEEP);
 	pthread_create(&(proc->die_check), 0, die_checker, proc);

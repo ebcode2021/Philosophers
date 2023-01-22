@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 16:04:46 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/22 19:12:44 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/22 20:05:55 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ void	wait_all_proc(t_proc *proc)
 	{
 		waitpid(-1, &(proc->status), 0);
 		if (WEXITSTATUS(proc->status) == EXIT_FAILURE)
+		{
 			kill(0, SIGINT);
+		}
 		idx++;
 	}
 	all_close(proc);

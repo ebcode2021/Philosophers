@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 20:47:03 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/22 17:09:10 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/22 20:10:43 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	child_proc(t_proc *proc, int idx)
 	
 	proc->philo = &philo;
 	init_philo(proc->philo, idx);
-	set_start_time(proc);
 	action(proc);
 }
 

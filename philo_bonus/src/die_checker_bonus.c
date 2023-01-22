@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 07:00:15 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/22 19:25:16 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/22 19:53:20 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_die(t_proc *proc)
 	sem_wait(proc->routine);
 	res = (proc->finish);
 	sem_post(proc->routine);
-	return (0);
+	return (res);
 }
 
 int	check_done(t_proc *proc)
@@ -63,7 +63,6 @@ void	*die_checker(void *void_proc)
 	{
 		if (check_die(proc) == 0 && check_over_time(proc))
 		{
-			sem_wait(proc->print);
 			proc->status = 1;
 			exit(1);
 		}

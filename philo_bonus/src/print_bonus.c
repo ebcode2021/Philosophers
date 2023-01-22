@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:11:01 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/22 19:43:02 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/22 19:57:52 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	print_action(t_proc *proc, long long start_time, char *msg)
 {
 	sem_wait(proc->print);
-	if (ft_strncmp(msg, DIE_MSG, 5) && check_die(proc) == 1)
+	if (check_die(proc) && ft_strncmp(msg, DIE_MSG, 5))
 	{
 		sem_post(proc->print);
 		return ;
