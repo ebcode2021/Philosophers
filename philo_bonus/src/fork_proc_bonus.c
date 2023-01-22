@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 20:47:03 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/22 20:10:43 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/22 20:54:13 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,23 @@
 
 static void	init_philo(t_philo *philo, int idx)
 {
+	char	*tmp_file_name;
+
+	tmp_file_name = ft_itoa(idx + 1);
 	philo->idx = idx + 1;
 	philo->eat_cnt = 0;
 	philo->done = 0;
-	philo->file_name = ft_strjoin("file_", ft_itoa(philo->idx));
+	philo->file_name = ft_strjoin("file_", tmp_file_name);
+	free(tmp_file_name);
 	sem_unlink(philo->file_name);
 	philo->each = sem_open(philo->file_name, O_CREAT, 0666, 1);
+	free(philo->file_name);
 }
 
 void	child_proc(t_proc *proc, int idx)
 {
-	t_philo philo;
-	
+	t_philo	philo;
+
 	proc->philo = &philo;
 	init_philo(proc->philo, idx);
 	action(proc);

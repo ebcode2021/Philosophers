@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 07:00:15 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/22 19:53:20 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/22 20:53:51 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	*die_checker(void *void_proc)
 			exit(1);
 		}
 		if (check_done(proc))
-			break;
+			break ;
 	}
 	return (0);
 }

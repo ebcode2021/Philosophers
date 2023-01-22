@@ -27,7 +27,7 @@ OBJS = $(SRCS_PATH:.c=.o)
 
 # SANITIZE
 ifdef SANITIZE
-	CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
+	CFLAGS = -Wall -Wextra -Werror -fsanitize=thread -g3
 endif
 
 # COMMANDS

@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:13:02 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/22 20:03:41 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/22 20:51:09 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 long long	get_time(void)
 {
 	struct timeval	time;
-	
+
 	gettimeofday(&time, 0);
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }

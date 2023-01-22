@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 13:33:20 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/22 17:11:02 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/22 20:53:43 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ int	check_one_philo(t_proc *proc)
 {
 	if (proc->philo_cnt != 1)
 		return (0);
-	print_action(proc, proc->start_time, FORK_MSG);
-	usleep(proc->time_to_die);
-	print_action(proc, proc->start_time, DIE_MSG);
+	printf("%lld ", get_elapsed_time(proc->start_time));
+	printf("%d %s\n", proc->philo->idx, FORK_MSG);
+	usleep_timer(proc->time_to_die);
+	printf("%lld ", get_elapsed_time(proc->start_time));
+	printf("%d %s\n", proc->philo->idx, DIE_MSG);
 	return (1);
 }

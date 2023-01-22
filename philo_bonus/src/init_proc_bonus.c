@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 20:10:31 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/22 17:30:18 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/22 20:52:54 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static void	init_proc_sem(t_proc *proc)
 	all_sem_unlink();
 	all_sem_open(proc);
 }
-
 
 void	init_proc(t_proc *proc, int argc, char *argv[])
 {
