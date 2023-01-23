@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 19:32:29 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/22 20:54:23 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/23 12:13:15 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	routine(t_proc *proc)
 	if (check_one_philo(proc))
 		return ;
 	philo = proc->philo;
-	sem_post(proc->routine);
+	//sem_post(proc->routine);
 	if ((philo->idx) % 2)
 		usleep(DEFAULT_USLEEP);
 	pthread_create(&(proc->die_check), 0, die_checker, proc);
@@ -75,6 +75,6 @@ static void	routine(t_proc *proc)
 
 void	action(t_proc *proc)
 {
-	sem_wait(proc->routine);
+	//sem_wait(proc->routine);
 	routine(proc);
 }

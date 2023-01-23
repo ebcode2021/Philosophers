@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 20:47:03 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/22 20:54:13 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/23 12:11:22 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ static void	init_philo(t_philo *philo, int idx)
 {
 	char	*tmp_file_name;
 
-	tmp_file_name = ft_itoa(idx + 1);
 	philo->idx = idx + 1;
 	philo->eat_cnt = 0;
 	philo->done = 0;
+	tmp_file_name = ft_itoa(idx + 1);
 	philo->file_name = ft_strjoin("file_", tmp_file_name);
-	free(tmp_file_name);
 	sem_unlink(philo->file_name);
 	philo->each = sem_open(philo->file_name, O_CREAT, 0666, 1);
+	free(tmp_file_name);
 	free(philo->file_name);
 }
 
