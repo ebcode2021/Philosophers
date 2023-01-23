@@ -6,16 +6,11 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 16:25:52 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/20 17:23:46 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/23 11:58:41 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void	leaks(void)
-{
-	system("leaks philo");
-}
 
 int	main(int argc, char **argv)
 {

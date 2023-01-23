@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 20:58:13 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/20 21:34:52 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/23 11:50:11 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	philo_sleep(t_philo *philo)
 	usleep_timer(philo->inform->time_to_sleep);
 }
 
-static void	philo_routine(t_philo *philo)
+static void	routine(t_philo *philo)
 {
 	while (check_finish(philo) == 0 && philo->done == 0)
 	{
@@ -65,12 +65,10 @@ void	*action(void *void_philo)
 	t_philo	*philo;
 
 	philo = (t_philo *)void_philo;
-	pthread_mutex_lock(&philo->inform->routine_mutex);
-	pthread_mutex_unlock(&philo->inform->routine_mutex);
 	if (check_one_philo(philo))
 		return (0);
 	if (philo->idx % 2)
 		usleep(DEFAULT_USLEEP);
-	philo_routine(philo);
+	routine(philo);
 	return (0);
 }

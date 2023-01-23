@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 20:25:16 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/20 20:35:55 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/23 11:33:18 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int			check_all_done(t_philo *philos, t_inform *inform);
 int			check_finish(t_philo *philo);
 int			check_one_philo(t_philo *philo);
 int			check_over_time(t_philo *philo);
-int			check_stop_monitoring(t_philo *philos, t_inform *inform);
 
 /* destroy_mutex.c */
 void		destory_mutex(t_philo *philos, t_inform *inform);
