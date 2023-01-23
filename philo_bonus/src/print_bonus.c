@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:11:01 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/22 20:51:19 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/23 12:28:04 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	print_action(t_proc *proc, long long start_time, char *msg)
 	}
 	printf("%lld ", get_elapsed_time(start_time));
 	printf("%d %s\n", proc->philo->idx, msg);
-	sem_post(proc->print);
+	if (ft_strncmp(msg, DIE_MSG, 5))
+		sem_post(proc->print);
 }
 
 void	print_error_with_exit(char *msg)

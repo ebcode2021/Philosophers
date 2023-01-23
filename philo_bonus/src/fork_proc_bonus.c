@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 20:47:03 by eunson            #+#    #+#             */
-/*   Updated: 2023/01/23 12:11:22 by eunson           ###   ########.fr       */
+/*   Updated: 2023/01/23 12:21:49 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	fork_proc(t_proc *proc)
 
 	idx = 0;
 	sem_wait(proc->routine);
+	proc->start_time = get_time();
 	while (idx < proc->philo_cnt)
 	{
 		pid = fork();
