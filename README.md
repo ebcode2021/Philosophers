@@ -2,8 +2,6 @@
 
 ## Introduction
 
-<img src="https://commons.wikimedia.org/wiki/File:An_illustration_of_the_dining_philosophers_problem.png"/>
-
 "식사하는 철학자" 문제는 병렬 컴퓨팅 환경에서 **자원 공유와 데드락 회피**의 어려움을 보여주는 고전적인 동기화 및 병렬 처리 문제다. \
 C 언어를 사용하여 멀티 스레드 및 멀티 프로세스 프로그래밍에 대한 학습을 진행하며 코드를 작성했다.
 
@@ -66,6 +64,10 @@ $ ./philo --help
 
 ![case1](https://github.com/ebcode2021/philosophers/assets/84271971/059c73be-6b4f-468a-aa2c-e13140b2d99d)
 
+**Output** :
+`[TimeStamp] [philosopher's number] [acting] `\
+ ex) 25 1 has taken a fork
+
 ## Code Flow
 
 <!--// 여기에 코드 플로우-->
@@ -83,8 +85,8 @@ $ ./philo --help
 3. DeadLock \
    교착상태\
    두 개 이상의 프로세스나 스레드가 서로 상대방의 작업이 끝나기를 기다리며 무한히 대기하는 상태
-     <details>
-     <summary> DeadLock의 4가지 필요조건 </summary>
+   <details>
+   <summary> DeadLock의 4가지 필요조건 </summary>
 
     - 상호배타(Mutual Exclusion): 자원은 한 번에 하나의 프로세스나 스레드만 사용
     - 점유와 대기(Hold and Wait) : 적어도 하나의 자원을 가진 채로 다른 자원을 대기
@@ -108,5 +110,5 @@ $ ./philo --help
    Lock / Unlock 개념으로, **동기화 대상이 오직 1개**다.
 
 6. Semaphore \
-   공유된 자원 or 임계 영역에 **다수**의 thread나 process가 접근하는 것을 막는다.
+   공유된 자원 or 임계 영역에 **다수**의 thread나 process가 접근하는 것을 막는다. \
    Wait / Post 개념으로 **동기화 대상이 N개**다.
