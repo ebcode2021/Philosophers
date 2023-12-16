@@ -2,7 +2,7 @@
 
 ## Introduction
 
-![](https://commons.wikimedia.org/wiki/File:An_illustration_of_the_dining_philosophers_problem.png)
+<img src="https://commons.wikimedia.org/wiki/File:An_illustration_of_the_dining_philosophers_problem.png"/>
 
 "식사하는 철학자" 문제는 병렬 컴퓨팅 환경에서 **자원 공유와 데드락 회피**의 어려움을 보여주는 고전적인 동기화 및 병렬 처리 문제다. \
 C 언어를 사용하여 멀티 스레드 및 멀티 프로세스 프로그래밍에 대한 학습을 진행하며 코드를 작성했다.
@@ -27,9 +27,11 @@ $ make
 **- Execution**
 
 ```
-$ ./philo [number_of_philosophers] [time_to_die] [time_to_eat] [time_to_sleep] (number_of_times_each_philosopher_must_eat)
+$ ./philo [number_of_philosophers] [time_to_die] [time_to_eat]
+	[time_to_sleep](number_of_times_each_philosopher_must_eat)
 
-$ ./philo_bonus [number_of_philosophers] [time_to_die] [time_to_eat] [time_to_sleep](number_of_times_each_philosopher_must_eat)
+$ ./philo_bonus [number_of_philosophers] [time_to_die] [time_to_eat]
+	[time_to_sleep](number_of_times_each_philosopher_must_eat)
 ```
 
 **- Help**
@@ -53,16 +55,16 @@ $ ./philo --help
 ```
 
 **- Example** \
-**Case 1** : All philosophers keep eating. \
-`./philo 200 800 200 200`
-![case1](https://github.com/ebcode2021/philosophers/assets/84271971/059c73be-6b4f-468a-aa2c-e13140b2d99d)
-
-**Case 2** : All philosophers eat a fixed number of times. \
+**Case 1** : All philosophers eat a fixed number of times. \
 `./philo 5 800 200 200 3`
-![case2](https://github.com/ebcode2021/philosophers/assets/84271971/483471c3-6840-4873-8eac-0bb7adaa1fd8)
-**Case 3**: One philosopher starves to death. \
+
+**Case 2**: One philosopher starves to death. \
 `./philo 2 400 200 210`
-![case3](https://github.com/ebcode2021/philosophers/assets/84271971/ff201a2f-028e-45ff-b041-01f6be3bc9fc)
+
+**Case 3** : All philosophers keep eating. \
+`./philo 200 800 200 200`
+
+![case1](https://github.com/ebcode2021/philosophers/assets/84271971/059c73be-6b4f-468a-aa2c-e13140b2d99d)
 
 ## Code Flow
 
@@ -88,7 +90,7 @@ $ ./philo --help
     - 점유와 대기(Hold and Wait) : 적어도 하나의 자원을 가진 채로 다른 자원을 대기
     - 비선점(No Preemption) : 이미 할당된 자원을 강제로 빼앗을 수 없다.
     - 환형 대기(Circular Wait) : 순환 형태로 자원을 대기
-      </details>
+          </details>
 
 4. multi-thread vs multi-process
 
