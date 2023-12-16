@@ -85,14 +85,14 @@ $ ./philo --help
 3. DeadLock \
    교착상태\
    두 개 이상의 프로세스나 스레드가 서로 상대방의 작업이 끝나기를 기다리며 무한히 대기하는 상태
-   <details>
-   <summary> DeadLock의 4가지 필요조건 </summary>
+     <details>
+     <summary> DeadLock의 4가지 필요조건 </summary>
 
     - 상호배타(Mutual Exclusion): 자원은 한 번에 하나의 프로세스나 스레드만 사용
     - 점유와 대기(Hold and Wait) : 적어도 하나의 자원을 가진 채로 다른 자원을 대기
     - 비선점(No Preemption) : 이미 할당된 자원을 강제로 빼앗을 수 없다.
     - 환형 대기(Circular Wait) : 순환 형태로 자원을 대기
-          </details>
+      </details>
 
 4. multi-thread vs multi-process
 
