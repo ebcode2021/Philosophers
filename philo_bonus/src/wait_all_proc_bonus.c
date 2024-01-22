@@ -21,17 +21,8 @@ static void	all_close(t_proc *proc)
 
 void	wait_all_proc(t_proc *proc)
 {
-	int	idx;
-
-	idx = 0;
-	while (idx < proc->philo_cnt)
-	{
-		waitpid(-1, &(proc->status), 0);
-		if (WEXITSTATUS(proc->status) == EXIT_FAILURE)
-		{
-			kill(0, SIGINT);
-		}
-		idx++;
-	}
+	waitpid(-1, &(proc->status), 0);
+	if (WEXITSTATUS(proc->status) == EXIT_FAILURE)
+		kill(0, SIGINT);
 	all_close(proc);
 }
