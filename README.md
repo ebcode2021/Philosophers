@@ -2,9 +2,6 @@
 
 ## Introduction
 
-"식사하는 철학자" 문제는 병렬 컴퓨팅 환경에서 **자원 공유와 데드락 회피**의 어려움을 보여주는 고전적인 동기화 및 병렬 처리 문제다. \
-C 언어를 사용하여 멀티 스레드 및 멀티 프로세스 프로그래밍에 대한 학습을 진행하며 코드를 작성했다.
-
 "The Dining Philosophers Problem" is a classical synchronization and parallel processing issue that illustrates challenges in **resource sharing and deadlock avoidance** in a parallel computing environment. \
 This project is a training to multi-treads/multi-process programming using C.
 
@@ -70,8 +67,12 @@ $ ./philo --help
 ex) 25 1 has taken a fork
 
 ## Code Flow
+### Multi-threading with Mutex
+![philo-mutex](https://github.com/ebcode2021/philosophers/assets/84271971/55958b04-2a1e-43a9-857e-4a5fc2798475)
 
-<!--// 여기에 코드 플로우-->
+
+### Multi-process with Semaphore
+![philo-semaphore](https://github.com/ebcode2021/philosophers/assets/84271971/ac3c9ce7-64b6-46a3-8ab8-0a6ce4befa25)
 
 ## Key Concepts
 
@@ -122,3 +123,7 @@ Lock / Unlock 개념으로, **동기화 대상이 오직 1개**다.
 
 공유된 자원 or 임계 영역에 **다수**의 thread나 process가 접근하는 것을 막는다. \
 Wait / Post 개념으로 **동기화 대상이 N개**다.
+
+
+<!-- "식사하는 철학자" 문제는 병렬 컴퓨팅 환경에서 **자원 공유와 데드락 회피**의 어려움을 보여주는 고전적인 동기화 및 병렬 처리 문제다. \
+C 언어를 사용하여 멀티 스레드 및 멀티 프로세스 프로그래밍에 대한 학습을 진행하며 코드를 작성했다. -->
